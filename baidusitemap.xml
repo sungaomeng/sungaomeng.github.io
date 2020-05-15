@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>http://yoursite.com/python/check-lb-auto-repair/</loc>
+    <lastmod>2020-05-13</lastmod>
+  </url>  <url>
+    <loc>http://yoursite.com/zabbix/zabbix-alarm-convergence-compression/</loc>
+    <lastmod>2020-05-08</lastmod>
+  </url>  <url>
+    <loc>http://yoursite.com/prometheus/install-prometheus-operator/</loc>
+    <lastmod>2020-05-08</lastmod>
+  </url>  <url>
+    <loc>http://yoursite.com/dns/aliyun-classic-network-private-dns/</loc>
+    <lastmod>2019-07-31</lastmod>
+  </url>  <url>
+    <loc>http://yoursite.com/canal/install-canal-to-kafka-HACluster/</loc>
+    <lastmod>2019-07-17</lastmod>
+  </url>  <url>
+    <loc>http://yoursite.com/shell/quickly-delete-lot-files/</loc>
+    <lastmod>2019-05-23</lastmod>
+  </url>  <url>
+    <loc>http://yoursite.com/efk/filebeat/limit-cpu/</loc>
+    <lastmod>2019-05-20</lastmod>
+  </url>  <url>
+    <loc>http://yoursite.com/efk/filebeat/reload-log/</loc>
+    <lastmod>2019-05-19</lastmod>
+  </url>  <url>
+    <loc>http://yoursite.com/efk/filebeat/registry-content-analysis/</loc>
+    <lastmod>2019-05-18</lastmod>
+  </url>  <url>
+    <loc>http://yoursite.com/hexo/hexo-valine/</loc>
+    <lastmod>2019-05-10</lastmod>
+  </url>  <url>
+    <loc>http://yoursite.com/hexo/hexo-github-custom-domin/</loc>
+    <lastmod>2019-05-01</lastmod>
+  </url>  <url>
+    <loc>http://yoursite.com/hello-world/</loc>
+    <lastmod>2019-04-30</lastmod>
+  </url>
+</urlset>

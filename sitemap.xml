@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>http://yoursite.com/link/index.html</loc>
+    
+    <lastmod>2020-05-14T15:31:59.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/categories/index.html</loc>
+    
+    <lastmod>2020-05-14T15:31:44.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/tags/index.html</loc>
+    
+    <lastmod>2020-05-14T15:31:24.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/python/check-lb-auto-repair/</loc>
+    
+    <lastmod>2020-05-13T03:34:00.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/zabbix/zabbix-alarm-convergence-compression/</loc>
+    
+    <lastmod>2020-05-08T16:00:00.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/prometheus/install-prometheus-operator/</loc>
+    
+    <lastmod>2020-05-08T02:22:01.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/dns/aliyun-classic-network-private-dns/</loc>
+    
+    <lastmod>2019-07-31T16:00:00.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/canal/install-canal-to-kafka-HACluster/</loc>
+    
+    <lastmod>2019-07-17T16:00:00.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/shell/quickly-delete-lot-files/</loc>
+    
+    <lastmod>2019-05-23T16:00:00.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/efk/filebeat/limit-cpu/</loc>
+    
+    <lastmod>2019-05-20T16:00:00.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/efk/filebeat/reload-log/</loc>
+    
+    <lastmod>2019-05-19T16:00:00.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/efk/filebeat/registry-content-analysis/</loc>
+    
+    <lastmod>2019-05-18T16:00:00.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/hexo/hexo-valine/</loc>
+    
+    <lastmod>2019-05-10T16:00:00.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/hexo/hexo-github-custom-domin/</loc>
+    
+    <lastmod>2019-05-01T02:22:01.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/hello-world/</loc>
+    
+    <lastmod>2019-04-30T16:00:00.000Z</lastmod>
+    
+  </url>
+  
+</urlset>
