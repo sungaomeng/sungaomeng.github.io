@@ -1,0 +1,234 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>阿里云经典网络私有DNS服务(内网DNS)方案 | See</title><meta name="description" content="分享在阿里云经典网络里建立私有DNS服务的整个历程和方法"><meta name="keywords" content="DNS,aliyun"><meta name="author" content="See"><meta name="copyright" content="See"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.png"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="crossorigin"/><link rel="dns-prefetch" href="https://fonts.googleapis.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="dns-prefetch" href="//busuanzi.ibruce.info"/><meta name="twitter:card" content="summary"><meta name="twitter:title" content="阿里云经典网络私有DNS服务(内网DNS)方案"><meta name="twitter:description" content="分享在阿里云经典网络里建立私有DNS服务的整个历程和方法"><meta name="twitter:image" content="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg"><meta property="og:type" content="article"><meta property="og:title" content="阿里云经典网络私有DNS服务(内网DNS)方案"><meta property="og:url" content="http://yoursite.com/dns/aliyun-classic-network-private-dns/"><meta property="og:site_name" content="See"><meta property="og:description" content="分享在阿里云经典网络里建立私有DNS服务的整个历程和方法"><meta property="og:image" content="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg"><meta property="article:published_time" content="2019-07-31T16:00:00.000Z"><meta property="article:modified_time" content="2019-07-31T16:00:00.000Z"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>var autoChangeMode = '1'
+var t = Cookies.get("theme")
+if (autoChangeMode == '1'){
+  var isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+  var isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+  var isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined){
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport){
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour < 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+  }
+  } else if (t == 'light') activateLightMode()
+  else activateDarkMode()
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="canonical" href="http://yoursite.com/dns/aliyun-classic-network-private-dns/"><link rel="prev" title="zabbix告警收敛" href="http://yoursite.com/zabbix/zabbix-alarm-convergence-compression/"><link rel="next" title="安装Canal HA集群并输出至Kafka" href="http://yoursite.com/canal/install-canal-to-kafka-HACluster/"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://xxx/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  highlightShrink: 'true',
+  isFontAwesomeV5: false,
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+  
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isSidebar: true  
+  }</script><noscript><style>
+#page-header {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 4.2.1"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">12</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">15</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">9</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> 清单</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> Movie</span></a></li></ul></div></div></div></div><i class="fa fa-arrow-right on" id="toggle-sidebar" aria-hidden="true">     </i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#现状"><span class="toc-number">1.</span> <span class="toc-text">现状</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#痛点"><span class="toc-number">2.</span> <span class="toc-text">痛点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#目标"><span class="toc-number">3.</span> <span class="toc-text">目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决方案"><span class="toc-number">4.</span> <span class="toc-text">解决方案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#架构图"><span class="toc-number">4.1.</span> <span class="toc-text">架构图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#思路"><span class="toc-number">4.2.</span> <span class="toc-text">思路</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#搭建"><span class="toc-number">5.</span> <span class="toc-text">搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#购买硬件资源"><span class="toc-number">5.1.</span> <span class="toc-text">购买硬件资源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ansible安装BIND9-主从架构"><span class="toc-number">5.2.</span> <span class="toc-text">Ansible安装BIND9 主从架构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#压测"><span class="toc-number">6.</span> <span class="toc-text">压测</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#querperf安装"><span class="toc-number">6.1.</span> <span class="toc-text">querperf安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建测试文件"><span class="toc-number">6.2.</span> <span class="toc-text">创建测试文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#执行测试"><span class="toc-number">6.3.</span> <span class="toc-text">执行测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#结果"><span class="toc-number">6.4.</span> <span class="toc-text">结果</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#切换"><span class="toc-number">7.</span> <span class="toc-text">切换</span></a></li></ol></div></div></div><div id="body-wrap"><div class="post-bg" id="nav" style="background-image: url(https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg)"><div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">See</a></span><span class="pull_right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> 清单</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> Movie</span></a></li></ul></div></div><span class="toggle-menu close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span></span></div><div id="post-info"><div id="post-title"><div class="posttitle">阿里云经典网络私有DNS服务(内网DNS)方案</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="发表于 2019-08-01 00:00:00"><i class="fa fa-calendar" aria-hidden="true"></i> 发表于 2019-08-01</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="更新于 2019-08-01 00:00:00"><i class="fa fa-history" aria-hidden="true"></i> 更新于 2019-08-01</span></time><span class="post-meta__categories"><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/DNS/">DNS</a></span></div><div class="meta-secondline"> <span class="post-meta-wordcount"><i class="post-meta__icon fa fa-file-word-o" aria-hidden="true"></i><span>字数总计:</span><span class="word-count">1.1k</span><span class="post-meta__separator">|</span><i class="post-meta__icon fa fa-clock-o" aria-hidden="true"></i><span>阅读时长: 3 分钟</span></span></div><div class="meta-thirdline"><span class="post-meta-pv-cv"><span class="post-meta__separator">|</span><i class="fa fa-eye post-meta__icon" aria-hidden="true"> </i><span>阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"></span></div></div></div></div><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><h2 id="现状"><a href="#现状" class="headerlink" title="现状"></a>现状</h2><ul>
+<li>有内网Host需求的全部通过绑定Hosts访问(/etc/hosts)</li>
+</ul>
+<h2 id="痛点"><a href="#痛点" class="headerlink" title="痛点"></a>痛点</h2><ul>
+<li>需要手动修改hosts文件</li>
+<li>维护麻烦易出错</li>
+<li>docker环境还需要单独给每个pod添加hosts适配,不能做到统一管理</li>
+</ul>
+<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
+<li><p>统一管理域名映射关系</p>
+</li>
+<li><p>最好是WEB界面管理</p>
+</li>
+<li><p>基础服务要保证稳定</p>
+</li>
+<li><p>支持”<a href="https://help.aliyun.com/document_detail/107125.html" target="_blank" rel="noopener">递归解析代理</a>“</p>
+<ul>
+<li>因为我们有相同域名内外网解析到不同IP的场景(最开始没有规划好)</li>
+<li>比如api.aliyun.com <ul>
+<li>公网解析到的是1.1.1.1(公网负载均衡)</li>
+<li>内网配置的hosts是10.1.1.1(内网负载均衡)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>  起初想自建BIND提供DNS服务,不过简单测试了下BIND,发现BIND并不能满足我的需求:<strong>不支持递归解析代理功能</strong>, 因为BIND的Zone是由本地完全代理解析的,如果本地Zone配置里不存在对应的记录就会返回不存在,不会再去公网上去找结果并返回.(望大神指点)</p>
+<p>  举个栗子🌰:</p>
+<p>  例如，Zone名称为<strong>aliyun.com</strong>,在<strong>aliyun.com</strong>内配置了三条私有记录，如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th align="left">主机记录</th>
+<th align="left">类型</th>
+<th align="left">TTL</th>
+<th align="left">记录值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">host01</td>
+<td align="left">A</td>
+<td align="left">60</td>
+<td align="left">10.0.0.1</td>
+</tr>
+<tr>
+<td align="left">host02</td>
+<td align="left">A</td>
+<td align="left">60</td>
+<td align="left">10.0.0.2</td>
+</tr>
+<tr>
+<td align="left">host03</td>
+<td align="left">A</td>
+<td align="left">60</td>
+<td align="left">10.0.0.3</td>
+</tr>
+</tbody></table>
+<ul>
+<li>在VPC内查询 <strong>host01.aliyun.com,host02.aliyun.com 或者 host03.aliyun.com</strong>时，分别返回私有记录<strong>10.0.0.1,10.0.0.2,10.0.0.3</strong>。</li>
+<li>在VPC内查询 <a href="http://www.aliyun.com" target="_blank" rel="noopener">www.aliyun.com</a>, api.aliyun.com ,rds.aliyun.com**等公共域名时，进行递归查询，以互联网实际域名解析结果为最终DNS响应结果。</li>
+</ul>
+<p>​    现在各大云厂商都支持内网DNS解析，阿里云现在也出了<strong>PrivateZone</strong>服务,不过是<strong>收费版</strong>,但PrivateZone有一个限制就是<strong>只能专有网络(VPC)使用</strong>,这就比较坑了,不过综合看了下PrivateZone的功能,发现完全<strong>满足我的需求</strong>,于是想方设法让让它支持经典网络</p>
+<p>​    (这里解释下为什么非得要支持经典网络: 我们最开始就是使用经典网络,80%业务都在上面,计划迁移到VPC但还没开始实施,所以先解决DNS问题再说吧)</p>
+<p>​    经过与阿里云沟通,发现他们官方没有什么建议可以实现,于是自己搞吧~</p>
+<h3 id="架构图"><a href="#架构图" class="headerlink" title="架构图"></a>架构图</h3><p><img src="https://upload-images.jianshu.io/upload_images/6840999-32d13a23e972e6c0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="阿里云经典网络私有DNS服务方案.png"></p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><ul>
+<li>PrivateZone绑定VPC后,该VPC内的主机都可以支持自定义解析</li>
+<li>通过在VPC里搭建BIND 代理到PrivateZone服务</li>
+</ul>
+<h2 id="搭建"><a href="#搭建" class="headerlink" title="搭建"></a>搭建</h2><h3 id="购买硬件资源"><a href="#购买硬件资源" class="headerlink" title="购买硬件资源"></a>购买硬件资源</h3><ol>
+<li>创建一个专有网络(VPC)</li>
+<li>创建一个DNS服务(PrivateZone)</li>
+<li>创建阿里云服务器(ECS)搭建BIND服务,最低两台(主从架构)</li>
+<li>创建一个负载均衡(SLB)监听UDP53</li>
+<li>创建一台阿里云服务器(经典网络)(DNS 客户端)</li>
+</ol>
+<h3 id="Ansible安装BIND9-主从架构"><a href="#Ansible安装BIND9-主从架构" class="headerlink" title="Ansible安装BIND9 主从架构"></a>Ansible安装BIND9 主从架构</h3><p>以下为安装过程,具体见<a href="https://github.com/sungaomeng/ansible-dns.git" target="_blank" rel="noopener">GITHUB</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum -y install ansible</span><br><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;sungaomeng&#x2F;ansible-dns.git</span><br><span class="line">cd ansible-dns</span><br><span class="line">ansible all -m ping</span><br><span class="line">ansible-playbook deploy.yml</span><br></pre></td></tr></table></figure>
+
+<p>注意在执行playbook前要修改ansible/hosts 配置</p>
+<ol>
+<li><p>forwarder_list</p>
+<ul>
+<li><p>转发dns的地址列表</p>
+</li>
+<li><p>将值修改为bind机器/etc/resolv.conf 中的nameserver地址</p>
+</li>
+</ul>
+</li>
+</ol>
+<ol start="2">
+<li><p>internal_list</p>
+<ul>
+<li>内部网络地址列表，表示允许递归查询的客户端列表，一般为内部服务器ip所在的网段</li>
+<li>将值修改为客户端IP段</li>
+</ul>
+</li>
+<li><p>masters/slaves</p>
+<ul>
+<li>BIND主从IP地址</li>
+</ul>
+</li>
+<li><p>ansible_ssh_port/user/pass</p>
+<ul>
+<li>如果没有配置SSH互信就指定SSH信息</li>
+</ul>
+</li>
+</ol>
+<h2 id="压测"><a href="#压测" class="headerlink" title="压测"></a>压测</h2><h3 id="querperf安装"><a href="#querperf安装" class="headerlink" title="querperf安装"></a>querperf安装</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">wget https://downloads.isc.org/isc/bind9/9.9.4/bind-9.9.4.tar.gz</span><br><span class="line">tar zxvf bind-9.9.4.tar.gz</span><br><span class="line">cd bind-9.9.4/contrib/queryperf</span><br><span class="line">./configure</span><br><span class="line">make</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建测试文件"><a href="#创建测试文件" class="headerlink" title="创建测试文件"></a>创建测试文件</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vim ./querytest.txt</span><br><span class="line">写入以下内容</span><br><span class="line">www.baidu.com A</span><br><span class="line">执行 :1,$y回车p</span><br><span class="line">复制到1w行~</span><br></pre></td></tr></table></figure>
+
+<h3 id="执行测试"><a href="#执行测试" class="headerlink" title="执行测试"></a>执行测试</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">./queryperf -q 20 -d ./querytest.txt -s 192.168.50.158 -l 100</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">压测条件:</span><br><span class="line">  1. 时间: 100秒</span><br><span class="line">  2. 并发数: 120</span><br><span class="line">  3. 压测对象: SLB-&gt;单台2核4G DNS服务器</span><br><span class="line">结果:</span><br><span class="line">  1. CPU 68%</span><br><span class="line">  2. Mem 1.5%</span><br><span class="line">  3. QPS 2.2W</span><br><span class="line">  4. RTT average: 0.003891 sec</span><br><span class="line"> </span><br><span class="line">压测条件:</span><br><span class="line"> 1. 时间: 100秒</span><br><span class="line"> 2. 并发数: 160</span><br><span class="line"> 3. 压测对象: SLB-&gt;单台2核4G DNS服务器</span><br><span class="line">结果:</span><br><span class="line">  1. CPU 75%</span><br><span class="line">  2. Mem 1.5%</span><br><span class="line">  3. QPS 3.1W</span><br><span class="line">  4. RTT average: 0.004834 sec</span><br></pre></td></tr></table></figure>
+<p><strong>（生产环境共有3台服务通过SLB提供服务,以上结果需要*3才是线上的瓶颈）</strong></p>
+<h2 id="切换"><a href="#切换" class="headerlink" title="切换"></a>切换</h2><p>将经典网络ECS的/etc/resolv.conf nameserver地址改为负载均衡地址即可</p>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">See</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://yoursite.com/dns/aliyun-classic-network-private-dns/">http://yoursite.com/dns/aliyun-classic-network-private-dns/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://yoursite.com" target="_blank">See</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/DNS/">DNS</a><a class="post-meta__tags" href="/tags/aliyun/">aliyun</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><div class="post-reward"><a class="reward-button button--primary button--animated"> <i class="fa fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="post-qr-code__img" src="/img/wechat.jpg" alt="微信"/><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="post-qr-code__img" src="/img/alipay.jpg" alt="支付寶"/><div class="post-qr-code__desc">支付寶</div></li></ul></div></a></div><nav class="pagination_post" id="pagination"><div class="prev-post pull_left"><a href="/zabbix/zabbix-alarm-convergence-compression/"><img class="prev_cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">zabbix告警收敛</div></div></a></div><div class="next-post pull_right"><a href="/canal/install-canal-to-kafka-HACluster/"><img class="next_cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">安装Canal HA集群并输出至Kafka</div></div></a></div></nav><hr><div id="post-comment"><div class="comment_headling"><i class="fa fa-comments fa-fw" aria-hidden="true"></i><span> 评论</span></div><div class="vcomment" id="vcomment"></div><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var requestSetting = function (from,set) {
+  var from = from
+  var setting = set.split(',').filter(function(item){
+  return from.indexOf(item) > -1
+  });
+  setting = setting.length == 0 ? from :setting;
+  return setting
+}
+
+var guestInfo = requestSetting(['nick','mail','link'],'nick,mail,link')
+var requiredFields = requestSetting(['nick','mail','link'],'nick,mail')
+
+window.valine = new Valine({
+  el:'#vcomment',
+  appId: 'pRycGzd3FYHtyDPRGGiuYNnd-gzGzoHsz',
+  appKey: 'QwcWIgNVE2fly5Sgy1GlyFCH',
+  notify: false,
+  verify: false,
+  placeholder: 'Please leave your footprints',
+  avatar: 'monsterid',
+  meta: guestInfo,
+  pageSize: '10',
+  lang: 'zh-CN',
+  recordIP: false,
+  serverURLs: '',
+  emojiCDN: '',
+  emojiMaps: "",
+  enableQQ: false,
+  requiredFields: requiredFields
+});</script></div></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 By See</div><div class="framework-info"><span>驱动 </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="阅读模式"></i><i class="fa fa-plus" id="font_plus" title="放大字体"></i><i class="fa fa-minus" id="font_minus" title="缩小字体"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="简繁转换" target="_self">繁</a><i class="darkmode fa fa-moon-o" id="darkmode" title="夜间模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div><a id="to_comment" href="#post-comment" title="直达评论"><i class="scroll_to_comment fa fa-comments">  </i></a><i class="fa fa-list-ul close" id="mobile-toc-button" title="目录" aria-hidden="true"></i><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div></section><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js" type="module"></script></body></html>
