@@ -3,11 +3,3 @@ https://opsolo.com/zabbix/zabbix-alarm-convergence-compression/
 https://opsolo.com/prometheus/install-prometheus-operator/
 https://opsolo.com/dns/aliyun-classic-network-private-dns/
 https://opsolo.com/canal/install-canal-to-kafka-HACluster/
-https://opsolo.com/shell/quickly-delete-lot-files/
-https://opsolo.com/efk/filebeat/limit-cpu/
-https://opsolo.com/efk/filebeat/reload-log/
-https://opsolo.com/efk/filebeat/registry-content-analysis/
-https://opsolo.com/hexo/hexo-gitalk-auto-init/
-https://opsolo.com/hexo/hexo-valine/
-https://opsolo.com/hexo/hexo-github-custom-domin/
-https://opsolo.com/hello-world/
