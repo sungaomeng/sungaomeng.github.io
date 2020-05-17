@@ -20,11 +20,11 @@
       
         <tags>
             
+            <tag> Shell </tag>
+            
             <tag> Hexo </tag>
             
             <tag> PicGo </tag>
-            
-            <tag> Shell </tag>
             
         </tags>
       
@@ -53,7 +53,7 @@
             
             <tag> Shadowsocks </tag>
             
-            <tag> wall </tag>
+            <tag> Wall </tag>
             
         </tags>
       
@@ -78,9 +78,9 @@
       
         <tags>
             
-            <tag> zabbix </tag>
+            <tag> Python </tag>
             
-            <tag> python </tag>
+            <tag> Zabbix </tag>
             
         </tags>
       
@@ -132,7 +132,7 @@
             
             <tag> DNS </tag>
             
-            <tag> aliyun </tag>
+            <tag> Aliyun </tag>
             
         </tags>
       
@@ -150,14 +150,14 @@
       
       <categories>
           
-          <category> canal </category>
+          <category> Canal </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> canal </tag>
+            <tag> Canal </tag>
             
         </tags>
       
@@ -182,7 +182,9 @@
       
         <tags>
             
-            <tag> shell </tag>
+            <tag> Shell </tag>
+            
+            <tag> Hdfs </tag>
             
         </tags>
       
@@ -207,7 +209,7 @@
       
         <tags>
             
-            <tag> shell </tag>
+            <tag> Shell </tag>
             
         </tags>
       
@@ -234,7 +236,7 @@
             
             <tag> EFK </tag>
             
-            <tag> filebeat </tag>
+            <tag> Filebeat </tag>
             
         </tags>
       
@@ -261,7 +263,7 @@
             
             <tag> EFK </tag>
             
-            <tag> filebeat </tag>
+            <tag> Filebeat </tag>
             
         </tags>
       
@@ -288,7 +290,7 @@
             
             <tag> EFK </tag>
             
-            <tag> filebeat </tag>
+            <tag> Filebeat </tag>
             
         </tags>
       
@@ -313,11 +315,11 @@
       
         <tags>
             
-            <tag> nodejs </tag>
+            <tag> Hexo </tag>
             
-            <tag> hexo </tag>
+            <tag> Nodejs </tag>
             
-            <tag> gitalk </tag>
+            <tag> Gitalk </tag>
             
         </tags>
       
@@ -394,7 +396,7 @@
       
         <tags>
             
-            <tag> hello-world </tag>
+            <tag> Hello-world </tag>
             
         </tags>
       
