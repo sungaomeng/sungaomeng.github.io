@@ -20,11 +20,11 @@
       
         <tags>
             
-            <tag> Shell </tag>
-            
             <tag> Hexo </tag>
             
             <tag> PicGo </tag>
+            
+            <tag> Shell </tag>
             
         </tags>
       
@@ -168,7 +168,7 @@
       <link href="/hadoop/traverse-hdfs-all-files/"/>
       <url>/hadoop/traverse-hdfs-all-files/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<blockquote><p>在文件里太多的情况下直接hdfs ls会导致内存溢出, 无法获取所有文件列表，这里通过java的方式遍历HDFS,获取所有文件列表输出到文件</p></blockquote><h3 id="Jar-包地址"><a href="#Jar-包地址" class="headerlink" title="Jar 包地址"></a>Jar 包地址</h3><p><a href="https://github.com/sungaomeng/blog-images/tree/master/file/hadoop/hdfs-1.0-SNAPSHOT.jar" target="_blank" rel="noopener">GitHub链接</a></p><h3 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h3><blockquote><p>下载Jar包后执行以下命令</p><p>/dir1 是HDFS里的目录</p></blockquote><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hadoop jar hdfs-1.0-SNAPSHOT.jar &#x2F;dir1 &gt; dir1.txt</span><br></pre></td></tr></table></figure>]]></content>
       
       
       <categories>
@@ -180,7 +180,7 @@
       
         <tags>
             
-            <tag> Shell </tag>
+            <tag> Java </tag>
             
             <tag> Hdfs </tag>
             
