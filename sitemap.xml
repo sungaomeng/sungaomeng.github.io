@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://opsolo.com/python/libreoffice-doc-to-docx/</loc>
+    
+    <lastmod>2020-05-29T09:21:30.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://opsolo.com/hexo/hexo-picgo-cdn-shell/</loc>
     
     <lastmod>2020-05-16T16:00:00.000Z</lastmod>
@@ -67,7 +74,7 @@
   <url>
     <loc>https://opsolo.com/hadoop/traverse-hdfs-all-files/</loc>
     
-    <lastmod>2019-05-23T16:00:00.000Z</lastmod>
+    <lastmod>2019-06-19T16:00:00.000Z</lastmod>
     
   </url>
   

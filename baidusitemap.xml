@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://opsolo.com/python/libreoffice-doc-to-docx/</loc>
+    <lastmod>2020-05-29</lastmod>
+  </url>  <url>
     <loc>https://opsolo.com/hexo/hexo-picgo-cdn-shell/</loc>
     <lastmod>2020-05-16</lastmod>
   </url>  <url>
@@ -20,7 +23,7 @@
     <lastmod>2019-07-17</lastmod>
   </url>  <url>
     <loc>https://opsolo.com/hadoop/traverse-hdfs-all-files/</loc>
-    <lastmod>2019-05-23</lastmod>
+    <lastmod>2019-06-19</lastmod>
   </url>  <url>
     <loc>https://opsolo.com/shell/quickly-delete-lot-files/</loc>
     <lastmod>2019-05-23</lastmod>
