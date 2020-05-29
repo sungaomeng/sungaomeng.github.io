@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>python_docx依次读取word文档中的文本与表格</title>
+      <link href="/python/pythonx_docx-read-all-word/"/>
+      <url>/python/pythonx_docx-read-all-word/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>因为要文档数量太多,所以使用python_docx批量读取word文档中的文本与表格</p></blockquote><h3 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h3><ul><li>Mac</li><li>Python 3.5.6</li><li>python_docx</li></ul><h3 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo pip install -i https://pypi.tuna.tsinghua.edu.cn/simple python_docx</span><br></pre></td></tr></table></figure><h3 id="Python脚本"><a href="#Python脚本" class="headerlink" title="Python脚本"></a>Python脚本</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> docx</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> docx.document <span class="keyword">import</span> Document</span><br><span class="line"><span class="keyword">from</span> docx.oxml.table <span class="keyword">import</span> CT_Tbl</span><br><span class="line"><span class="keyword">from</span> docx.oxml.text.paragraph <span class="keyword">import</span> CT_P</span><br><span class="line"><span class="keyword">from</span> docx.table <span class="keyword">import</span> _Cell, Table</span><br><span class="line"><span class="keyword">from</span> docx.text.paragraph <span class="keyword">import</span> Paragraph</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">iter_block_items</span><span class="params">(parent)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Yield each paragraph and table child within *parent*, in document order.</span></span><br><span class="line"><span class="string">    Each returned value is an instance of either Table or Paragraph. *parent*</span></span><br><span class="line"><span class="string">    would most commonly be a reference to a main Document object, but</span></span><br><span class="line"><span class="string">    also works for a _Cell object, which itself can contain paragraphs and tables.</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="keyword">if</span> isinstance(parent, Document):</span><br><span class="line">        parent_elm = parent.element.body</span><br><span class="line">    <span class="keyword">elif</span> isinstance(parent, _Cell):</span><br><span class="line">        parent_elm = parent._tc</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">raise</span> ValueError(<span class="string">"something's not right"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> child <span class="keyword">in</span> parent_elm.iterchildren():</span><br><span class="line">        <span class="keyword">if</span> isinstance(child, CT_P):</span><br><span class="line">            <span class="keyword">yield</span> Paragraph(child, parent)</span><br><span class="line">        <span class="keyword">elif</span> isinstance(child, CT_Tbl):</span><br><span class="line">            <span class="keyword">yield</span> Table(child, parent)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">read_table</span><span class="params">(table)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> [[cell.text <span class="keyword">for</span> cell <span class="keyword">in</span> row.cells] <span class="keyword">for</span> row <span class="keyword">in</span> table.rows]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">read_word</span><span class="params">(word_path)</span>:</span></span><br><span class="line">    doc = docx.Document(word_path)</span><br><span class="line">    <span class="keyword">for</span> block <span class="keyword">in</span> iter_block_items(doc):</span><br><span class="line">        <span class="keyword">if</span> isinstance(block, Paragraph):</span><br><span class="line">            print(<span class="string">"text"</span>, [block.text])</span><br><span class="line">        <span class="keyword">elif</span> isinstance(block, Table):</span><br><span class="line">            print(<span class="string">"table"</span>, read_table(block))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    ROOT_DIR_P = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))  <span class="comment"># 项目根目录</span></span><br><span class="line">    word_path = os.path.join(ROOT_DIR_P, <span class="string">"data/test_to_word.docx"</span>)  <span class="comment"># pdf文件路径及文件名</span></span><br><span class="line">    <span class="comment"># word_path = os.path.join(ROOT_DIR_P, "data/test_to_word2.docx")  # pdf文件路径及文件名</span></span><br><span class="line">    read_word(word_path)</span><br></pre></td></tr></table></figure><h3 id="执行效果"><a href="#执行效果" class="headerlink" title="执行效果"></a>执行效果</h3><p><img src="https://cdn.jsdelivr.net/gh/sungaomeng/blog-images/img/python/python_docx-word.png" alt="python_docx-word"></p><p><img src="https://cdn.jsdelivr.net/gh/sungaomeng/blog-images/img/python/python_docx-result.png" alt="python_docx-result"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Python </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Python </tag>
+            
+            <tag> docx </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Mac用Python批量将doc转换为docx</title>
       <link href="/python/libreoffice-doc-to-docx/"/>
       <url>/python/libreoffice-doc-to-docx/</url>
