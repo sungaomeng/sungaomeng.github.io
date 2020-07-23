@@ -1,2 +1,2 @@
+https://opsolo.com/kafka/reset-consumer-offset-to-specified-time-point/
 https://opsolo.com/dengbao/centos-baseline-inspection/
-https://opsolo.com/python/pythonx_docx-read-all-word/

@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>重置Consumer的Offset到指定时间点</title>
+      <link href="/kafka/reset-consumer-offset-to-specified-time-point/"/>
+      <url>/kafka/reset-consumer-offset-to-specified-time-point/</url>
+      
+        <content type="html"><![CDATA[<p>   有些情况下需要从指定时间点开始重新消费kafka，下面记录两种方法</p><h4 id="一、直接指定时间重置Offset"><a href="#一、直接指定时间重置Offset" class="headerlink" title="一、直接指定时间重置Offset"></a>一、直接指定时间重置Offset</h4><blockquote><p>新版本(2.*)的kafka才支持 –reset-offsets 参数</p></blockquote><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">kafka/bin/kafka-consumer-groups.sh --bootstrap-server 192.168.72.16:9092 --group elk-logstash --reset-offsets  --to-datetime <span class="string">'2020-07-20T00:00:00.000'</span>  --topic request-php-log --execute</span><br><span class="line"></span><br><span class="line"><span class="comment"># --all-topics 指定所有topic</span></span><br></pre></td></tr></table></figure><h4 id="二、查找指定时间的offset并手动重置"><a href="#二、查找指定时间的offset并手动重置" class="headerlink" title="二、查找指定时间的offset并手动重置"></a>二、查找指定时间的offset并手动重置</h4><blockquote><p>0.*版本的只能用这种笨方法</p><p>前提是生产进topic的message 需要有时间字段，例如：”2020-07-20 00:10:23 test messages.”</p></blockquote><ul><li><p>查看topic的offset最大值</p><blockquote><p>–time -1 查找offset最大值</p><p>–time -2 查找offset最小值</p></blockquote><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/roobo/server/kafka/bin/kafka-run-class.sh kafka.tools.GetOffsetShell  --broker-list 192.168.72.16:9092 --topic request-php-log --time -1</span><br></pre></td></tr></table></figure></li><li><p>指定offset消费topic</p><blockquote><p> 根据日志内容的时间判断offset是不是自己想要的时间点</p><p> 如果不是就增大或者减小offset值，直至找到自己想要的时间点的日志，并记录下offset</p></blockquote></li></ul>  <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./kafka-simple-consumer-shell.sh --broker-list 192.168.72.16:9092 --topic request-php-log --max-messages 10 --partition 1 --<span class="built_in">print</span>-offsets --offset 1522801500</span><br></pre></td></tr></table></figure><ul><li><p>修改zookeeper里的offset偏移量</p><blockquote><p>记录下offset后 需要手动去zookeeper里修改consumer-group的消费偏移量</p></blockquote><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./zkCli.sh</span><br><span class="line"><span class="built_in">set</span> /consumers/<span class="built_in">test</span>-consumer-group/offsets/request-php-log/1 1522810500</span><br></pre></td></tr></table></figure></li></ul><p>这时再次启动test-consumer-group的消费端即可从指定的offset处开始消费</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Kafka </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Kafka </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>等保三级 - Linux 合规基线检查整改项</title>
       <link href="/dengbao/centos-baseline-inspection/"/>
       <url>/dengbao/centos-baseline-inspection/</url>
