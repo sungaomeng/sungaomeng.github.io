@@ -5,8 +5,8 @@ Allow: /categories/
 Allow: /tags/
 Allow: /about/
 Allow: /js/
+Allow: /css/
 Disallow: /vendors/
-Disallow: /css/
 Disallow: /fonts/
 Disallow: /fancybox/
 Sitemap: https://opsolo.com/sitemap.xml
