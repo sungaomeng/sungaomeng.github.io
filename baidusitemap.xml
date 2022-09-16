@@ -3,59 +3,77 @@
   <url>
     <loc>https://opsolo.com/kafka/reset-consumer-offset-to-specified-time-point/</loc>
     <lastmod>2020-07-22</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://opsolo.com/dengbao/centos-baseline-inspection/</loc>
     <lastmod>2020-07-19</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://opsolo.com/python/pythonx_docx-read-all-word/</loc>
     <lastmod>2020-05-29</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://opsolo.com/python/libreoffice-doc-to-docx/</loc>
     <lastmod>2020-05-29</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://opsolo.com/hexo/hexo-picgo-cdn-shell/</loc>
     <lastmod>2020-05-16</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://opsolo.com/python/check-lb-auto-repair/</loc>
     <lastmod>2020-05-13</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://opsolo.com/zabbix/zabbix-alarm-convergence-compression/</loc>
     <lastmod>2020-05-08</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://opsolo.com/prometheus/install-prometheus-operator/</loc>
     <lastmod>2020-05-08</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://opsolo.com/dns/aliyun-classic-network-private-dns/</loc>
     <lastmod>2019-07-31</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://opsolo.com/canal/install-canal-to-kafka-HACluster/</loc>
     <lastmod>2019-07-17</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://opsolo.com/hadoop/traverse-hdfs-all-files/</loc>
     <lastmod>2019-06-19</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://opsolo.com/shell/quickly-delete-lot-files/</loc>
     <lastmod>2019-05-23</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://opsolo.com/efk/filebeat/limit-cpu/</loc>
     <lastmod>2019-05-20</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://opsolo.com/efk/filebeat/reload-log/</loc>
     <lastmod>2019-05-19</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://opsolo.com/efk/filebeat/registry-content-analysis/</loc>
     <lastmod>2019-05-18</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://opsolo.com/hexo/hexo-gitalk-auto-init/</loc>
     <lastmod>2019-05-14</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://opsolo.com/hexo/hexo-valine/</loc>
     <lastmod>2019-05-10</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://opsolo.com/hexo/hexo-github-custom-domin/</loc>
     <lastmod>2019-05-01</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://opsolo.com/hello-world/</loc>
     <lastmod>2019-04-30</lastmod>
   </url>
-</urlset>
+</urlset> 
