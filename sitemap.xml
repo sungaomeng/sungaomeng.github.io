@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://opsolo.com/categories/index.html</loc>
+    
+    <lastmod>2021-10-26</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://opsolo.com/link/index.html</loc>
     
     <lastmod>2021-10-26</lastmod>
@@ -12,15 +21,6 @@
   
   <url>
     <loc>https://opsolo.com/tags/index.html</loc>
-    
-    <lastmod>2021-10-26</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://opsolo.com/categories/index.html</loc>
     
     <lastmod>2021-10-26</lastmod>
     
@@ -216,6 +216,13 @@
   </url>
   
   <url>
+    <loc>https://opsolo.com/tags/%E7%AD%89%E4%BF%9D/</loc>
+    <lastmod>2022-09-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://opsolo.com/tags/DNS/</loc>
     <lastmod>2022-09-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -224,13 +231,6 @@
   
   <url>
     <loc>https://opsolo.com/tags/Aliyun/</loc>
-    <lastmod>2022-09-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://opsolo.com/tags/Canal/</loc>
     <lastmod>2022-09-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -251,28 +251,7 @@
   </url>
   
   <url>
-    <loc>https://opsolo.com/tags/%E7%AD%89%E4%BF%9D/</loc>
-    <lastmod>2022-09-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://opsolo.com/tags/Nodejs/</loc>
-    <lastmod>2022-09-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://opsolo.com/tags/Hexo/</loc>
-    <lastmod>2022-09-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://opsolo.com/tags/Gitalk/</loc>
     <lastmod>2022-09-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -286,14 +265,21 @@
   </url>
   
   <url>
-    <loc>https://opsolo.com/tags/PicGo/</loc>
+    <loc>https://opsolo.com/tags/Nodejs/</loc>
     <lastmod>2022-09-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://opsolo.com/tags/Shell/</loc>
+    <loc>https://opsolo.com/tags/Gitalk/</loc>
+    <lastmod>2022-09-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://opsolo.com/tags/Canal/</loc>
     <lastmod>2022-09-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -301,13 +287,6 @@
   
   <url>
     <loc>https://opsolo.com/tags/Prometheus/</loc>
-    <lastmod>2022-09-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://opsolo.com/tags/Kafka/</loc>
     <lastmod>2022-09-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -328,7 +307,14 @@
   </url>
   
   <url>
-    <loc>https://opsolo.com/tags/Zabbix/</loc>
+    <loc>https://opsolo.com/tags/PicGo/</loc>
+    <lastmod>2022-09-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://opsolo.com/tags/Shell/</loc>
     <lastmod>2022-09-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -336,6 +322,20 @@
   
   <url>
     <loc>https://opsolo.com/tags/docx/</loc>
+    <lastmod>2022-09-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://opsolo.com/tags/Kafka/</loc>
+    <lastmod>2022-09-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://opsolo.com/tags/Zabbix/</loc>
     <lastmod>2022-09-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -365,14 +365,14 @@
   </url>
   
   <url>
-    <loc>https://opsolo.com/categories/DNS/</loc>
+    <loc>https://opsolo.com/categories/%E7%AD%89%E4%BF%9D/</loc>
     <lastmod>2022-09-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://opsolo.com/categories/Canal/</loc>
+    <loc>https://opsolo.com/categories/DNS/</loc>
     <lastmod>2022-09-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -386,14 +386,14 @@
   </url>
   
   <url>
-    <loc>https://opsolo.com/categories/%E7%AD%89%E4%BF%9D/</loc>
+    <loc>https://opsolo.com/categories/Hexo/</loc>
     <lastmod>2022-09-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://opsolo.com/categories/Hexo/</loc>
+    <loc>https://opsolo.com/categories/Canal/</loc>
     <lastmod>2022-09-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -407,14 +407,14 @@
   </url>
   
   <url>
-    <loc>https://opsolo.com/categories/Kafka/</loc>
+    <loc>https://opsolo.com/categories/Python/</loc>
     <lastmod>2022-09-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://opsolo.com/categories/Python/</loc>
+    <loc>https://opsolo.com/categories/Kafka/</loc>
     <lastmod>2022-09-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
