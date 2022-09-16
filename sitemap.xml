@@ -230,14 +230,14 @@
   </url>
   
   <url>
-    <loc>https://opsolo.com/tags/Hexo/</loc>
+    <loc>https://opsolo.com/tags/Nodejs/</loc>
     <lastmod>2022-09-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://opsolo.com/tags/Nodejs/</loc>
+    <loc>https://opsolo.com/tags/Hexo/</loc>
     <lastmod>2022-09-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -251,7 +251,14 @@
   </url>
   
   <url>
-    <loc>https://opsolo.com/tags/Canal/</loc>
+    <loc>https://opsolo.com/tags/%E7%AD%89%E4%BF%9D/</loc>
+    <lastmod>2022-09-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://opsolo.com/tags/Github/</loc>
     <lastmod>2022-09-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -272,14 +279,21 @@
   </url>
   
   <url>
-    <loc>https://opsolo.com/tags/Kafka/</loc>
+    <loc>https://opsolo.com/tags/Prometheus/</loc>
     <lastmod>2022-09-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://opsolo.com/tags/%E7%AD%89%E4%BF%9D/</loc>
+    <loc>https://opsolo.com/tags/Canal/</loc>
+    <lastmod>2022-09-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://opsolo.com/tags/Kafka/</loc>
     <lastmod>2022-09-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -294,20 +308,6 @@
   
   <url>
     <loc>https://opsolo.com/tags/Shadowsocks/</loc>
-    <lastmod>2022-09-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://opsolo.com/tags/Prometheus/</loc>
-    <lastmod>2022-09-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://opsolo.com/tags/Github/</loc>
     <lastmod>2022-09-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -379,6 +379,20 @@
   </url>
   
   <url>
+    <loc>https://opsolo.com/categories/%E7%AD%89%E4%BF%9D/</loc>
+    <lastmod>2022-09-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://opsolo.com/categories/Prometheus/</loc>
+    <lastmod>2022-09-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://opsolo.com/categories/Canal/</loc>
     <lastmod>2022-09-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -393,21 +407,7 @@
   </url>
   
   <url>
-    <loc>https://opsolo.com/categories/%E7%AD%89%E4%BF%9D/</loc>
-    <lastmod>2022-09-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://opsolo.com/categories/Python/</loc>
-    <lastmod>2022-09-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://opsolo.com/categories/Prometheus/</loc>
     <lastmod>2022-09-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
