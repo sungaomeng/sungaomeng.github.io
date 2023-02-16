@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://opsolo.com/k8s/kubernetes-upgrade-v1.11tov1.20/</loc>
+    
+    <lastmod>2023-02-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://opsolo.com/nodejs/debug-nodejs/</loc>
     
     <lastmod>2022-09-22</lastmod>
@@ -20,7 +29,7 @@
   </url>
   
   <url>
-    <loc>https://opsolo.com/tags/index.html</loc>
+    <loc>https://opsolo.com/link/index.html</loc>
     
     <lastmod>2021-10-26</lastmod>
     
@@ -29,7 +38,7 @@
   </url>
   
   <url>
-    <loc>https://opsolo.com/link/index.html</loc>
+    <loc>https://opsolo.com/tags/index.html</loc>
     
     <lastmod>2021-10-26</lastmod>
     
@@ -200,9 +209,9 @@
   </url>
   
   <url>
-    <loc>https://opsolo.com/hello-world/</loc>
+    <loc>https://opsolo.com/k8s/ansible-kubernetes-autoinstall/</loc>
     
-    <lastmod>2019-04-30</lastmod>
+    <lastmod>2018-05-19</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -211,155 +220,162 @@
 
   <url>
     <loc>https://opsolo.com/</loc>
-    <lastmod>2022-09-26</lastmod>
+    <lastmod>2023-02-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
   <url>
-    <loc>https://opsolo.com/tags/Hello-world/</loc>
-    <lastmod>2022-09-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://opsolo.com/tags/Canal/</loc>
-    <lastmod>2022-09-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://opsolo.com/tags/%E7%AD%89%E4%BF%9D/</loc>
-    <lastmod>2022-09-26</lastmod>
+    <lastmod>2023-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://opsolo.com/tags/DNS/</loc>
-    <lastmod>2022-09-26</lastmod>
+    <lastmod>2023-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://opsolo.com/tags/Aliyun/</loc>
-    <lastmod>2022-09-26</lastmod>
+    <lastmod>2023-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://opsolo.com/tags/Java/</loc>
-    <lastmod>2022-09-26</lastmod>
+    <loc>https://opsolo.com/tags/Kubernetes/</loc>
+    <lastmod>2023-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://opsolo.com/tags/Hdfs/</loc>
-    <lastmod>2022-09-26</lastmod>
+    <loc>https://opsolo.com/tags/Canal/</loc>
+    <lastmod>2023-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://opsolo.com/tags/Hexo/</loc>
-    <lastmod>2022-09-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://opsolo.com/tags/Kafka/</loc>
-    <lastmod>2022-09-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://opsolo.com/tags/Prometheus/</loc>
-    <lastmod>2022-09-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://opsolo.com/tags/Shell/</loc>
-    <lastmod>2022-09-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://opsolo.com/tags/Nodejs/</loc>
-    <lastmod>2022-09-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://opsolo.com/tags/Gitalk/</loc>
-    <lastmod>2022-09-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://opsolo.com/tags/PicGo/</loc>
-    <lastmod>2022-09-26</lastmod>
+    <lastmod>2023-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://opsolo.com/tags/Github/</loc>
-    <lastmod>2022-09-26</lastmod>
+    <lastmod>2023-02-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://opsolo.com/tags/Java/</loc>
+    <lastmod>2023-02-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://opsolo.com/tags/Hdfs/</loc>
+    <lastmod>2023-02-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://opsolo.com/tags/Kafka/</loc>
+    <lastmod>2023-02-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://opsolo.com/tags/Ansible/</loc>
+    <lastmod>2023-02-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://opsolo.com/tags/Prometheus/</loc>
+    <lastmod>2023-02-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://opsolo.com/tags/Nodejs/</loc>
+    <lastmod>2023-02-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://opsolo.com/tags/Gitalk/</loc>
+    <lastmod>2023-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://opsolo.com/tags/Python/</loc>
-    <lastmod>2022-09-26</lastmod>
+    <lastmod>2023-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://opsolo.com/tags/Shadowsocks/</loc>
-    <lastmod>2022-09-26</lastmod>
+    <lastmod>2023-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://opsolo.com/tags/docx/</loc>
-    <lastmod>2022-09-26</lastmod>
+    <lastmod>2023-02-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://opsolo.com/tags/PicGo/</loc>
+    <lastmod>2023-02-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://opsolo.com/tags/Shell/</loc>
+    <lastmod>2023-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://opsolo.com/tags/Zabbix/</loc>
-    <lastmod>2022-09-26</lastmod>
+    <lastmod>2023-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://opsolo.com/tags/EFK/</loc>
-    <lastmod>2022-09-26</lastmod>
+    <lastmod>2023-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://opsolo.com/tags/Filebeat/</loc>
-    <lastmod>2022-09-26</lastmod>
+    <lastmod>2023-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -367,85 +383,85 @@
 
   
   <url>
-    <loc>https://opsolo.com/categories/hello-world/</loc>
-    <lastmod>2022-09-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://opsolo.com/categories/Canal/</loc>
-    <lastmod>2022-09-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://opsolo.com/categories/%E7%AD%89%E4%BF%9D/</loc>
-    <lastmod>2022-09-26</lastmod>
+    <lastmod>2023-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://opsolo.com/categories/DNS/</loc>
-    <lastmod>2022-09-26</lastmod>
+    <lastmod>2023-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://opsolo.com/categories/Shell/</loc>
-    <lastmod>2022-09-26</lastmod>
+    <loc>https://opsolo.com/categories/Kubernetes/</loc>
+    <lastmod>2023-02-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://opsolo.com/categories/Canal/</loc>
+    <lastmod>2023-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://opsolo.com/categories/Hexo/</loc>
-    <lastmod>2022-09-26</lastmod>
+    <lastmod>2023-02-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://opsolo.com/categories/Shell/</loc>
+    <lastmod>2023-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://opsolo.com/categories/Kafka/</loc>
-    <lastmod>2022-09-26</lastmod>
+    <lastmod>2023-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://opsolo.com/categories/Prometheus/</loc>
-    <lastmod>2022-09-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://opsolo.com/categories/Nodejs/</loc>
-    <lastmod>2022-09-26</lastmod>
+    <lastmod>2023-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://opsolo.com/categories/Python/</loc>
-    <lastmod>2022-09-26</lastmod>
+    <lastmod>2023-02-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://opsolo.com/categories/Nodejs/</loc>
+    <lastmod>2023-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://opsolo.com/categories/Zabbix/</loc>
-    <lastmod>2022-09-26</lastmod>
+    <lastmod>2023-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://opsolo.com/categories/EFK/</loc>
-    <lastmod>2022-09-26</lastmod>
+    <lastmod>2023-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
