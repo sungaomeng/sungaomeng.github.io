@@ -1,4 +1,5 @@
 https://opsolo.com/argocd/install-argocd/
+https://opsolo.com/argocd/argocd-notice-dingding/
 https://opsolo.com/k8s/kubernetes-upgrade-v1.11tov1.20/
 https://opsolo.com/nodejs/debug-nodejs/
 https://opsolo.com/kafka/reset-consumer-offset-to-specified-time-point/
@@ -7,4 +8,3 @@ https://opsolo.com/python/pythonx_docx-read-all-word/
 https://opsolo.com/python/libreoffice-doc-to-docx/
 https://opsolo.com/hexo/hexo-picgo-cdn-shell/
 https://opsolo.com/python/check-lb-auto-repair/
-https://opsolo.com/zabbix/zabbix-alarm-convergence-compression/

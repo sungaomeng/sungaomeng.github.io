@@ -11,6 +11,15 @@
   </url>
   
   <url>
+    <loc>https://opsolo.com/argocd/argocd-notice-dingding/</loc>
+    
+    <lastmod>2023-02-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://opsolo.com/k8s/kubernetes-upgrade-v1.11tov1.20/</loc>
     
     <lastmod>2023-02-16</lastmod>
@@ -29,7 +38,7 @@
   </url>
   
   <url>
-    <loc>https://opsolo.com/categories/index.html</loc>
+    <loc>https://opsolo.com/link/index.html</loc>
     
     <lastmod>2021-10-26</lastmod>
     
@@ -38,7 +47,7 @@
   </url>
   
   <url>
-    <loc>https://opsolo.com/link/index.html</loc>
+    <loc>https://opsolo.com/categories/index.html</loc>
     
     <lastmod>2021-10-26</lastmod>
     
@@ -236,7 +245,7 @@
 
   
   <url>
-    <loc>https://opsolo.com/tags/CICD/</loc>
+    <loc>https://opsolo.com/tags/%E7%AD%89%E4%BF%9D/</loc>
     <lastmod>2023-02-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -244,13 +253,6 @@
   
   <url>
     <loc>https://opsolo.com/tags/Argocd/</loc>
-    <lastmod>2023-02-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://opsolo.com/tags/%E7%AD%89%E4%BF%9D/</loc>
     <lastmod>2023-02-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -278,14 +280,7 @@
   </url>
   
   <url>
-    <loc>https://opsolo.com/tags/Java/</loc>
-    <lastmod>2023-02-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://opsolo.com/tags/Hdfs/</loc>
+    <loc>https://opsolo.com/tags/CICD/</loc>
     <lastmod>2023-02-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -306,7 +301,14 @@
   </url>
   
   <url>
-    <loc>https://opsolo.com/tags/Kafka/</loc>
+    <loc>https://opsolo.com/tags/Java/</loc>
+    <lastmod>2023-02-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://opsolo.com/tags/Hdfs/</loc>
     <lastmod>2023-02-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -327,14 +329,7 @@
   </url>
   
   <url>
-    <loc>https://opsolo.com/tags/Prometheus/</loc>
-    <lastmod>2023-02-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://opsolo.com/tags/Kubernetes/</loc>
+    <loc>https://opsolo.com/tags/Kafka/</loc>
     <lastmod>2023-02-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -349,6 +344,20 @@
   
   <url>
     <loc>https://opsolo.com/tags/Shell/</loc>
+    <lastmod>2023-02-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://opsolo.com/tags/Prometheus/</loc>
+    <lastmod>2023-02-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://opsolo.com/tags/Kubernetes/</loc>
     <lastmod>2023-02-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -406,14 +415,14 @@
 
   
   <url>
-    <loc>https://opsolo.com/categories/CICD/</loc>
+    <loc>https://opsolo.com/categories/%E7%AD%89%E4%BF%9D/</loc>
     <lastmod>2023-02-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://opsolo.com/categories/%E7%AD%89%E4%BF%9D/</loc>
+    <loc>https://opsolo.com/categories/Argocd/</loc>
     <lastmod>2023-02-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -434,7 +443,7 @@
   </url>
   
   <url>
-    <loc>https://opsolo.com/categories/Shell/</loc>
+    <loc>https://opsolo.com/categories/CICD/</loc>
     <lastmod>2023-02-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -442,6 +451,13 @@
   
   <url>
     <loc>https://opsolo.com/categories/Hexo/</loc>
+    <lastmod>2023-02-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://opsolo.com/categories/Shell/</loc>
     <lastmod>2023-02-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -463,6 +479,13 @@
   
   <url>
     <loc>https://opsolo.com/categories/Kubernetes/</loc>
+    <lastmod>2023-02-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://opsolo.com/categories/CICD/Argocd/</loc>
     <lastmod>2023-02-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
