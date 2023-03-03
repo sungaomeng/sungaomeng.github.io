@@ -1,0 +1,238 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>使用Jenkins为k8s持续部署CD | Ops Blog | 孙高猛</title><meta name="description" content="使用Jenkins搭建Web发布控制台为k8s应用持续部署"><meta name="keywords" content="CICD,Jenkins"><meta name="author" content="孙高猛"><meta name="copyright" content="孙高猛"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.png"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://www.google-analytics.com" crossorigin="crossorigin"/><link rel="dns-prefetch" href="https://www.google-analytics.com"/><link rel="preconnect" href="https://hm.baidu.com"/><link rel="dns-prefetch" href="https://hm.baidu.com"/><link rel="preconnect" href="http://ta.qq.com"/><link rel="dns-prefetch" href="http://ta.qq.com"/><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="crossorigin"/><link rel="dns-prefetch" href="https://fonts.googleapis.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="dns-prefetch" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="4KCz8xJQFaOFsUvpkhlumoBjQNVHiyzDD4w5MBTEuYw"/><meta name="baidu-site-verification" content="W2hzdcJsKR"/><meta name="360-site-verification" content="4097fe0ffd02617026cd937560bf9128"/><meta name="twitter:card" content="summary"><meta name="twitter:title" content="使用Jenkins为k8s持续部署CD"><meta name="twitter:description" content="使用Jenkins搭建Web发布控制台为k8s应用持续部署"><meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/sungaomeng/blog-images/img/hexo/default-cover/default-cover-12.jpg"><meta property="og:type" content="article"><meta property="og:title" content="使用Jenkins为k8s持续部署CD"><meta property="og:url" content="https://opsolo.com/jenkins/jenkins-k8s-cd/"><meta property="og:site_name" content="Ops Blog | 孙高猛"><meta property="og:description" content="使用Jenkins搭建Web发布控制台为k8s应用持续部署"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/sungaomeng/blog-images/img/hexo/default-cover/default-cover-12.jpg"><meta property="article:published_time" content="2023-03-03T09:07:00.000Z"><meta property="article:modified_time" content="2023-03-03T09:07:00.000Z"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>var autoChangeMode = '1'
+var t = Cookies.get("theme")
+if (autoChangeMode == '1'){
+  var isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+  var isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+  var isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined){
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport){
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour < 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+  }
+  } else if (t == 'light') activateLightMode()
+  else activateDarkMode()
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="canonical" href="https://opsolo.com/jenkins/jenkins-k8s-cd/"><link rel="next" title="使用Argocd进行持续部署" href="https://opsolo.com/argocd/install-argocd/"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/blueimp-md5/js/md5.min.js"></script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?654a0c496b1a42c1df2645682af8acba";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-166775343-1', 'auto');
+ga('send', 'pageview');
+</script><script src="https://tajs.qq.com/stats?sId=66557248" charset="UTF-8"></script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://xxx/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  highlightShrink: 'false',
+  isFontAwesomeV5: false,
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isanchor: false
+  
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isSidebar: true  
+  }</script><noscript><style>
+#page-header {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 4.2.1"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/images/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">24</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">25</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">16</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> 清单</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> Movie</span></a></li></ul></div></div></div></div><i class="fa fa-arrow-right on" id="toggle-sidebar" aria-hidden="true">     </i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#流程介绍"><span class="toc-number">1.</span> <span class="toc-text">流程介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#环境信息"><span class="toc-number">2.</span> <span class="toc-text">环境信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Jenkins项目创建"><span class="toc-number">3.</span> <span class="toc-text">Jenkins项目创建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#实现Build-with-Parameters"><span class="toc-number">3.1.</span> <span class="toc-text">实现Build with Parameters</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-集群列表"><span class="toc-number">3.1.1.</span> <span class="toc-text">1. 集群列表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-命名空间"><span class="toc-number">3.1.2.</span> <span class="toc-text">2. 命名空间</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-应用"><span class="toc-number">3.1.3.</span> <span class="toc-text">3. 应用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-当前镜像"><span class="toc-number">3.1.4.</span> <span class="toc-text">4. 当前镜像</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-选择新镜像"><span class="toc-number">3.1.5.</span> <span class="toc-text">5. 选择新镜像</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实现构建过程"><span class="toc-number">3.2.</span> <span class="toc-text">实现构建过程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#添加-执行-Shell"><span class="toc-number">3.2.1.</span> <span class="toc-text">添加 执行 Shell</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Build-History-展示内容优化"><span class="toc-number">3.3.</span> <span class="toc-text">Build History 展示内容优化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#设置构建名称"><span class="toc-number">3.3.1.</span> <span class="toc-text">设置构建名称</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#设置构建描述"><span class="toc-number">3.3.2.</span> <span class="toc-text">设置构建描述</span></a></li></ol></li></ol></li></ol></div></div></div><div id="body-wrap"><div class="post-bg" id="nav" style="background-image: url(https://cdn.jsdelivr.net/gh/sungaomeng/blog-images/img/hexo/default-cover/default-cover-12.jpg)"><div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">Ops Blog | 孙高猛</a></span><span class="pull_right menus"><div id="search_button"><a class="site-page social-icon search"><i class="fa fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> 清单</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> Movie</span></a></li></ul></div></div><span class="toggle-menu close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span></span></div><div id="post-info"><div id="post-title"><div class="posttitle">使用Jenkins为k8s持续部署CD</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="发表于 2023-03-03 17:07:00"><i class="fa fa-calendar" aria-hidden="true"></i> 发表于 2023-03-03</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="更新于 2023-03-03 17:07:00"><i class="fa fa-history" aria-hidden="true"></i> 更新于 2023-03-03</span></time><span class="post-meta__categories"><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/CICD/">CICD</a><i class="fa fa-angle-right post-meta__separator" aria-hidden="true"></i><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/CICD/Jenkins/">Jenkins</a></span></div><div class="meta-secondline"> <span class="post-meta-wordcount"><i class="post-meta__icon fa fa-file-word-o" aria-hidden="true"></i><span>字数总计:</span><span class="word-count">1.6k</span><span class="post-meta__separator">|</span><i class="post-meta__icon fa fa-clock-o" aria-hidden="true"></i><span>阅读时长: 6 分钟</span></span></div><div class="meta-thirdline"><span class="post-meta-pv-cv"><span class="post-meta__separator">|</span><i class="fa fa-eye post-meta__icon" aria-hidden="true"> </i><span>阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"></span></div></div></div></div><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><blockquote>
+<p>上篇文章我们部署测试了下Argocd，不过Argocd是基于Git声明式管理，需要将Deployment，Service 等YAML都放到git中，研发上线自助上线时需要修改YAML，上线时会覆盖到生产环境，如若生产环境对应用的的资源分配或副本等做过调整将会被覆盖，而且也有修改错误的风险。</p>
+<p>这次调研测试Jenkins主要是想通过Jenkins 让研发自助上线时仅需关注Image版本，无法修改其他内容，这样就避免了很多风险 </p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/sungaomeng/blog-images/img/jenkins/dashboard.png" alt="dashboard"></p>
+<h2 id="流程介绍"><a href="#流程介绍" class="headerlink" title="流程介绍"></a>流程介绍</h2><p>如上图，项目界面点击”Build with Parameters”后会展示出可选择界面<br>主要有以下功能</p>
+<ol>
+<li>当有多集群时，可选择需发布应用所属的集群（将多集群应用统一一个jenkins上线控制台）</li>
+<li>选择集群中需发布的应用</li>
+<li>展示出需发布应用当前正在使用的镜像版本</li>
+<li>选择需要发布的镜像版本<br>以上单选框的值均是逐层依赖关系，采用的”参数化构建”的”Active Choices Reactive Parameter”功能</li>
+</ol>
+<h2 id="环境信息"><a href="#环境信息" class="headerlink" title="环境信息"></a>环境信息</h2><ul>
+<li>Kubernetes： 阿里云ACK 托管集群</li>
+</ul>
+<ul>
+<li><p>因k8s集群在阿里云，Jenkins在公司内网，所以需要为k8s apiserver 绑定公网访问入口</p>
+<ul>
+<li>点击”集群信息”-&gt;”基本信息”，”API Server 公网连接端点”处点击”绑定公网IP”按钮，创建弹性IP后将会绑定到APIserver 的SLB上</li>
+<li>绑定后需为APIserver 的SLB添加IP白名单限制，仅允许以下网段访问<ol>
+<li>放通VPC网段，pod网段，节点网段，Service网段和100.64.0.0/10地址（这样保证阿里云内部访问正常）</li>
+<li>方通Jenkins出口网段（这样Jenkins可以通过kubelet命令调用集群数据）</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>镜像仓库 （我这里用到两个）</p>
+<ul>
+<li>自建Harbor</li>
+<li>阿里云容器镜像服务个人版<ol>
+<li>需在Jenkins服务器安装<a href="https://help.aliyun.com/document_detail/110244.html" target="_blank" rel="noopener">aliyun cli</a>命令行工具(用于获取镜像tags信息)</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>Jenkins 需安装以下插件</p>
+</li>
+</ul>
+<ul>
+<li><a href="https://plugins.jenkins.io/uno-choice" target="_blank" rel="noopener">Active Choices Plug-in版本2.6.4</a> #参数关联</li>
+<li><a href="https://plugins.jenkins.io/build-user-vars-plugin" target="_blank" rel="noopener">build user vars版本1.8</a> #定义名称全局变量</li>
+<li><a href="https://plugins.jenkins.io/build-name-setter" target="_blank" rel="noopener">Build Name and Description Setter版本2.2.0</a> #用户生成自定义Build Name</li>
+<li><a href="https://plugins.jenkins.io/description-setter" target="_blank" rel="noopener">description setter plugin版本1.10</a> #用户生成自定义Build Description</li>
+</ul>
+<ul>
+<li>Jenkins 服务器脚本准备</li>
+</ul>
+<ul>
+<li><p>将各集群访问Apiserver的KubeConfig存放到/opt/kubeconf/目录下，文件名写为集群名称，下面参数化构建和k8s.sh脚本需要调用</p>
+</li>
+<li><p>需要在服务器创建一个脚本”/opt/kubeconf/k8s.sh”</p>
+<p>脚本内容如下, Harbor 和Aliyun 部分账户密码需要修改为自己的</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">action=<span class="variable">$1</span></span><br><span class="line">cluster=<span class="variable">$2</span></span><br><span class="line">namespace=<span class="variable">$3</span></span><br><span class="line">deploy=<span class="variable">$4</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">case</span> <span class="variable">$action</span> <span class="keyword">in</span></span><br><span class="line">GetNs)</span><br><span class="line"><span class="comment"># Get NS List</span></span><br><span class="line">kubectl --kubeconfig /opt/kubeconf/<span class="variable">$cluster</span> get ns |awk <span class="string">'&#123;print $1&#125;'</span>|egrep -v <span class="string">"NAME|kube-|arms-"</span>| sed <span class="string">":a;N;s/\n/,/g;ta"</span></span><br><span class="line">;;</span><br><span class="line"></span><br><span class="line">GetDeploy)</span><br><span class="line"><span class="comment"># Get Deploy List</span></span><br><span class="line">kubectl --kubeconfig /opt/kubeconf/<span class="variable">$cluster</span> -n <span class="variable">$namespace</span>  get deploy |awk <span class="string">'&#123;print $1&#125;'</span>|egrep -v <span class="string">"NAME"</span> | sed <span class="string">':a;N;s/\n/,/g;ta'</span></span><br><span class="line">;;</span><br><span class="line"></span><br><span class="line">GetNowImage)</span><br><span class="line"><span class="comment"># Get Deploy Image</span></span><br><span class="line">kubectl --kubeconfig /opt/kubeconf/<span class="variable">$cluster</span> -n <span class="variable">$namespace</span>  get deploy <span class="variable">$deploy</span> -o jsonpath=<span class="string">"&#123;.spec.template.spec.containers[*].image&#125;"</span> | sed <span class="string">':a;N;s/\n/,/g;ta'</span></span><br><span class="line">;;</span><br><span class="line"></span><br><span class="line">GetRepoTagsList)</span><br><span class="line"><span class="comment">#Get Repositories Image lists</span></span><br><span class="line">NowImage=<span class="variable">$2</span></span><br><span class="line">RepoAddress=$(<span class="built_in">echo</span> <span class="variable">$NowImage</span> |awk -F <span class="string">'/'</span> <span class="string">'&#123;print $1&#125;'</span>)</span><br><span class="line">RepoName=$(<span class="built_in">echo</span> <span class="variable">$NowImage</span> | awk -F<span class="string">'/|:'</span> <span class="string">'&#123;print $2"/"$3&#125;'</span>)</span><br><span class="line"><span class="keyword">if</span> [[ <span class="variable">$RepoAddress</span> == <span class="string">'harbor.roobo.net'</span> ]]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    curl -s -u <span class="string">"需填写用户名:密码"</span> -X GET -H <span class="string">"Content-Type: application/json"</span> <span class="string">"https://需填写Harobor域名/api/repositories/<span class="variable">$&#123;RepoName&#125;</span>/tags"</span> | jq .[].name | sed <span class="string">':a;N;s/\n/,/g;s/"//g;ta'</span></span><br><span class="line"><span class="keyword">elif</span> [[ <span class="variable">$RepoAddress</span> =~ aliyuncs.com ]]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    /usr/<span class="built_in">local</span>/bin/aliyun cr --force --version 2016-06-07 --region cn-beijing --access-key-id 须填写accesskeyid --access-key-secret 须填写accesskeysecret GET /repos/<span class="variable">$&#123;RepoName&#125;</span>/tags |jq .data.tags[].tag | sed <span class="string">':a;N;s/\n/,/g;s/"//g;ta'</span> </span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line">;;</span><br><span class="line"></span><br><span class="line">SetImage)</span><br><span class="line"><span class="comment"># Update Deployment Image</span></span><br><span class="line">NowImage=<span class="variable">$5</span></span><br><span class="line">NewImage=<span class="variable">$6</span></span><br><span class="line">RepoAddress=$(<span class="built_in">echo</span> <span class="variable">$NowImage</span> | awk -F<span class="string">':'</span> <span class="string">'&#123;print $1&#125;'</span>)</span><br><span class="line">OldImageVersion=$(<span class="built_in">echo</span> <span class="variable">$NowImage</span> | awk -F<span class="string">':'</span> <span class="string">'&#123;print $2&#125;'</span>)</span><br><span class="line">kubectl --kubeconfig /opt/kubeconf/<span class="variable">$cluster</span> -n <span class="variable">$namespace</span> <span class="built_in">set</span> image deploy <span class="variable">$deploy</span> <span class="variable">$deploy</span>=<span class="variable">$RepoAddress</span>:<span class="variable">$NewImage</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"==== Successful Deployment ===="</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"Deployment details: <span class="variable">$deploy</span> from <span class="variable">$OldImageVersion</span> to <span class="variable">$NewImage</span>"</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"OldImage=<span class="variable">$NowImage</span>"</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"NewImage=<span class="variable">$RepoAddress</span>:<span class="variable">$NewImage</span>"</span></span><br><span class="line">;;</span><br><span class="line"><span class="keyword">esac</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+</li>
+</ul>
+<h2 id="Jenkins项目创建"><a href="#Jenkins项目创建" class="headerlink" title="Jenkins项目创建"></a>Jenkins项目创建</h2><h3 id="实现Build-with-Parameters"><a href="#实现Build-with-Parameters" class="headerlink" title="实现Build with Parameters"></a>实现Build with Parameters</h3><p>分步骤实现，注意以下参数过程中”名称”列需固化，每层参数构建都有变量依赖</p>
+<h4 id="1-集群列表"><a href="#1-集群列表" class="headerlink" title="1. 集群列表"></a>1. 集群列表</h4><p>在参数化构建过程中添加”选项参数”</p>
+<ul>
+<li>“名称”列填写”Cluster”</li>
+<li>“选项”列填写各个kubernetes集群名称（需与/opt/kubeconf/目录下KubeConfig集群名称一致）</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/sungaomeng/blog-images/img/jenkins/cluster.png" alt="cluster"></p>
+<h4 id="2-命名空间"><a href="#2-命名空间" class="headerlink" title="2. 命名空间"></a>2. 命名空间</h4><p>在参数化构建过程中添加”Active Choices Reactive Parameter”</p>
+<ul>
+<li>“Name”列填写”NameSpace”</li>
+<li>选择”Groovy Script”脚本<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">text = <span class="string">"/opt/kubeconf/k8s.sh GetNs <span class="variable">$Cluster</span>"</span>.execute().text</span><br><span class="line">myList = text.split(<span class="string">","</span>) as List</span><br><span class="line"><span class="built_in">return</span> myList</span><br></pre></td></tr></table></figure></li>
+<li>“Choice Type” 选择 “Single Select” 即单选项</li>
+<li>“Referenced parameters” 填写 “Cluster” (获取Namespace时需要依赖$Cluster)</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/sungaomeng/blog-images/img/jenkins/namespace.png" alt="namespace"></p>
+<h4 id="3-应用"><a href="#3-应用" class="headerlink" title="3. 应用"></a>3. 应用</h4><p>在参数化构建过程中添加”Active Choices Reactive Parameter”</p>
+<ul>
+<li>“Name”列填写”Deployment”</li>
+<li>选择”Groovy Script”脚本<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">text = <span class="string">"/opt/kubeconf/k8s.sh GetDeploy <span class="variable">$Cluster</span> <span class="variable">$NameSpace</span>"</span>.execute().text</span><br><span class="line">myList = text.split(<span class="string">","</span>) as List</span><br><span class="line"><span class="built_in">return</span> myList</span><br></pre></td></tr></table></figure></li>
+<li>“Choice Type” 选择 “Single Select” 即单选项</li>
+<li>“Referenced parameters” 填写 “Cluster,NameSpace” (获取Deployment时时需要依赖$Cluster,$Namespace)</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/sungaomeng/blog-images/img/jenkins/deployment.png" alt="deployment"></p>
+<h4 id="4-当前镜像"><a href="#4-当前镜像" class="headerlink" title="4. 当前镜像"></a>4. 当前镜像</h4><p>在参数化构建过程中添加”Active Choices Reactive Parameter”</p>
+<ul>
+<li>“Name”列填写”NowImage”</li>
+<li>选择”Groovy Script”脚本<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">text = <span class="string">"/opt/kubeconf/k8s.sh GetNowImage <span class="variable">$Cluster</span> <span class="variable">$NameSpace</span> <span class="variable">$Deployment</span>"</span>.execute().text</span><br><span class="line">myList = text.split(<span class="string">","</span>) as List</span><br><span class="line"><span class="built_in">return</span> myList</span><br></pre></td></tr></table></figure></li>
+<li>“Choice Type” 选择 “Single Select” 即单选项</li>
+<li>“Referenced parameters” 填写 “Cluster,NameSpace,Deployment” (获取NowImage时时需要依赖$Cluster,$Namespace,$Deployment)</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/sungaomeng/blog-images/img/jenkins/nowimage.png" alt="nowimage"></p>
+<h4 id="5-选择新镜像"><a href="#5-选择新镜像" class="headerlink" title="5. 选择新镜像"></a>5. 选择新镜像</h4><p>在参数化构建过程中添加”Active Choices Reactive Parameter”</p>
+<ul>
+<li>“Name”列填写”NewImage”</li>
+<li>选择”Groovy Script”脚本<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">text = <span class="string">"/opt/kubeconf/k8s.sh GetRepoTagsList <span class="variable">$NowImage</span>"</span>.execute().text</span><br><span class="line">myList = text.split(<span class="string">","</span>) as List</span><br><span class="line"><span class="built_in">return</span> myList</span><br></pre></td></tr></table></figure></li>
+<li>“Choice Type” 选择 “Single Select” 即单选项</li>
+<li>“Referenced parameters” 填写 “NowImage” (获取NewImage时需要依赖$NowImage, 根据NowImage去对应镜像仓库里查询所有的tags)</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/sungaomeng/blog-images/img/jenkins/newimage.png" alt="newimage"></p>
+<h3 id="实现构建过程"><a href="#实现构建过程" class="headerlink" title="实现构建过程"></a>实现构建过程</h3><h4 id="添加-执行-Shell"><a href="#添加-执行-Shell" class="headerlink" title="添加 执行 Shell"></a>添加 执行 Shell</h4><p>在”增加构建步骤”中选择”执行shell”<br>脚本内容为：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/opt/kubeconf/k8s.sh SetImage <span class="variable">$Cluster</span> <span class="variable">$NameSpace</span> <span class="variable">$Deployment</span> <span class="variable">$NowImage</span> <span class="variable">$NewImage</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/sungaomeng/blog-images/img/jenkins/cmdshell.png" alt="cmdshell"></p>
+<p>此时在Dashboard界面即可选择对应Deployment 和 新的镜像进行构建了。</p>
+<h3 id="Build-History-展示内容优化"><a href="#Build-History-展示内容优化" class="headerlink" title="Build History 展示内容优化"></a>Build History 展示内容优化</h3><p>默认的展示内容仅显示次数和时间，不显示任何版本相关信息，在查看构建历史时非常不明朗</p>
+<h4 id="设置构建名称"><a href="#设置构建名称" class="headerlink" title="设置构建名称"></a>设置构建名称</h4><ul>
+<li>在”构建环境”中勾选”Set Build Name”,并将”Build Name”设置为<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#$&#123;BUILD_NUMBER&#125;-$&#123;BUILD_USER&#125;-$&#123;Cluster&#125;</span></span><br></pre></td></tr></table></figure></li>
+<li>在”构建环境”中勾选”Set jenkins user build variables”<br><img src="https://cdn.jsdelivr.net/gh/sungaomeng/blog-images/img/jenkins/setbuildname.png" alt="setbuildname"></li>
+</ul>
+<h4 id="设置构建描述"><a href="#设置构建描述" class="headerlink" title="设置构建描述"></a>设置构建描述</h4><p>在”增加构建步骤”中选择”Set build description”，”Regular expression”内容填写为</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Deployment details:(.*)</span><br></pre></td></tr></table></figure>
+<p>在构建脚本/opt/kubeconf/k8s.sh执行结束后脚本会输出以下log，此正则将会匹配内容并设置到构建描述信息中</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Deployment details: cicd-test from v1.0.5-4d37c0b6 to v1.0.2-b0d24b86</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/sungaomeng/blog-images/img/jenkins/setbuilddesc.png" alt="setbuilddesc"></p>
+<p>控制台输出Log<br><img src="https://cdn.jsdelivr.net/gh/sungaomeng/blog-images/img/jenkins/consolelog.png" alt="consolelog"></p>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">孙高猛</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://opsolo.com/jenkins/jenkins-k8s-cd/">https://opsolo.com/jenkins/jenkins-k8s-cd/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://opsolo.com" target="_blank">Ops Blog | 孙高猛</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/CICD/">CICD</a><a class="post-meta__tags" href="/tags/Jenkins/">Jenkins</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/sungaomeng/blog-images/img/hexo/default-cover/default-cover-13.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><div class="post-reward"><a class="reward-button button--primary button--animated"> <i class="fa fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="post-qr-code__img" src="/img/wechat.jpg" alt="微信"/><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="post-qr-code__img" src="/img/alipay.jpg" alt="支付寶"/><div class="post-qr-code__desc">支付寶</div></li></ul></div></a></div><div class="post-ad"><script data-ad-client="ca-pub-8585055855794709" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script></div><nav class="pagination_post" id="pagination"><div class="next-post pull-full"><a href="/argocd/install-argocd/"><img class="next_cover" src="https://cdn.jsdelivr.net/gh/sungaomeng/blog-images/img/hexo/default-cover/default-cover-4.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">使用Argocd进行持续部署</div></div></a></div></nav><div class="relatedPosts"><div class="relatedPosts_headline"><i class="fa fa-fw fa-thumbs-up" aria-hidden="true"></i><span> 相关推荐</span></div><div class="relatedPosts_list"><div class="relatedPosts_item"><a href="/argocd/install-argocd/" title="使用Argocd进行持续部署"><img class="relatedPosts_cover" src="https://cdn.jsdelivr.net/gh/sungaomeng/blog-images/img/hexo/default-cover/default-cover-4.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2023-02-17</div><div class="relatedPosts_title">使用Argocd进行持续部署</div></div></a></div></div><div class="clear_both"></div></div><hr><div id="post-comment"><div class="comment_headling"><i class="fa fa-comments fa-fw" aria-hidden="true"></i><span> 评论</span></div><div id="gitalk-container"></div><script>var gitalk = new Gitalk({
+  clientID: '7ef5ea70b2e312cb127e',
+  clientSecret: 'cb830e95ec48173370e42a57a362e8b1519a83c8',
+  repo: 'sungaomeng.github.io',
+  owner: 'sungaomeng',
+  admin: ['sungaomeng'],
+  id: md5(decodeURI(location.pathname)),
+  language: 'zh-CN',
+  perPage: 10,
+  distractionFreeMode: true,
+  pagerDirection: 'last',
+  createIssueManually: false,
+  updateCountCallback: commentCount
+})
+gitalk.render('gitalk-container')
+
+function commentCount(n){
+  try {
+    document.getElementsByClassName('gitalk-comment-count')[0].innerHTML= n
+  } catch (e) {
+    return false
+  }
+}</script></div></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By 孙高猛</div><div class="framework-info"><span>驱动 </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="阅读模式"></i><i class="fa fa-plus" id="font_plus" title="放大字体"></i><i class="fa fa-minus" id="font_minus" title="缩小字体"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="简繁转换" target="_self">繁</a><i class="darkmode fa fa-moon-o" id="darkmode" title="夜间模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div><a id="to_comment" href="#post-comment" title="直达评论"><i class="scroll_to_comment fa fa-comments">  </i></a><i class="fa fa-list-ul close" id="mobile-toc-button" title="目录" aria-hidden="true"></i><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js" type="module"></script><script src="/js/search/local-search.js"></script></body></html>
